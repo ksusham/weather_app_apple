@@ -1,0 +1,44 @@
+<h1>Check Weather Forecast</h1>
+<%= form_with url: forecast_path, method: :get, local: true do |form| %>
+  <%= label_tag :address, "Enter Address" %>
+  <%= text_field_tag :address, nil, required: true %>
+  <%= submit_tag "Get Forecast" %>
+<% end %>
+
+<% if @error %>
+  <p style="color: red;"><%= @error %></p>
+<% end %>
+
+<% if @weather %>
+    <h2><% if @cached %> Cached (30 min) <% else %> Currrent <% end %> Forecast for </h2> <em><%= @weather[:location] %></em>
+    <p><strong>Temperature:</strong> <%= @weather[:temperature] %>°C</p>
+    <p><strong>Wind Speed:</strong> <%= @weather[:windspeed] %> km/h</p>
+
+    <h3>Hourly Forecast</h3>
+    <ul>
+    <% @weather[:hourly_forecast].each do |date, entries| %>
+        <h2><%= date %></h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Time</th>
+                <th>Temperature (°C)</th>
+                <th>Humidity (%)</th>
+                <th>Wind Speed (km/h)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% entries.each do |entry| %>
+                <tr>
+                <td><%= entry[:time] %></td>
+                <td><%= entry[:temperature] %></td>
+                <td><%= entry[:humidity] %></td>
+                <td><%= entry[:wind] %></td>
+                </tr>
+            <% end %>
+            </tbody>
+        </table>
+    <% end %>
+    </ul>
+
+<% end %>

@@ -1,0 +1,7 @@
+<h1>Check Weather Forecast</h1>
+<%= form_with url: forecast_path, method: :post do %>
+  <%= label_tag :address, "Enter Address" %>
+  <%= text_field_tag :address, nil, required: true %>
+  <%= submit_tag "Get Forecast" %>
+<% end %>
+
