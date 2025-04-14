@@ -14,7 +14,6 @@ class LocationService
     end
 
     data = JSON.parse(res.body).first
-    puts "Location API response: #{data.inspect}" if Rails.env.development?
     { lat: data["lat"],
       long: data["lon"],
       zip: data.dig("address", "postcode"),

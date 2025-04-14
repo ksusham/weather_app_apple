@@ -14,9 +14,7 @@ class ForecastsController < ApplicationController
         @error = "Location not found. Please enter a valid U.S. address."
         return
       end
-      puts "Location: #{location.inspect}" if Rails.env.development?
       forecast = WeatherService.fetch(location)
-      puts "Forecast: #{forecast.inspect}" if Rails.env.development?
       @weather = forecast[:data]
       @cached = forecast[:cached]
     end

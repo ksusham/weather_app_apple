@@ -1,0 +1,23 @@
+# Ignore log and temp files
+/log/*
+/tmp/*
+
+# Ignore secret files
+.env
+/config/master.key
+
+# Ignore system files
+.DS_Store
+
+# Ignore Node packages if using JS bundling
+/node_modules/
+
+# Ignore SQLite DB
+*.sqlite3
+*.sqlite3-journal
+
+# Ignore coverage reports
+/coverage/
+
+# Ignore byebug history
+.byebug_history
