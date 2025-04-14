@@ -32,5 +32,6 @@ Things you may want to cover:
   cd weather_app
   bundle install
   rails server
+  http://localhost:3000/
 
 - ...
